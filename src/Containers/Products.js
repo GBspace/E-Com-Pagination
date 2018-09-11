@@ -23,8 +23,8 @@ class Products extends React.Component{
             <div className='col-sm-3 col-lg-3 col-md-3 book-list' key={index}>
                 <div className="thumbnail">
                     <img className='img-thumbnail'
-                        src={product.image}
-                        alt={product.name}
+                        src={product.product_image}
+                        alt={product.product_name}
                     />
                 </div>
                 <div className="caption">
@@ -33,7 +33,7 @@ class Products extends React.Component{
                     </h4>
                     <h4>
                         <Link to={`./Products/${product.id}`}>
-                            {product.name}
+                            {product.product_name}
                         </Link>
                     </h4>
                     <p> {shortDesc}</p>
