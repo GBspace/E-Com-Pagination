@@ -45,12 +45,16 @@ class Products extends React.Component{
 
     render(){
         const {Products,loadMore} = this.props;
+        const prodArr = Object.entries(Products);
         return(
         <div>
             <div className="books row">
-                {Products.map((product,index)=>{
-                    return this.renderProduct(product,index);
-                })}
+                {
+                    
+                    prodArr.map((product)=>{
+                        return this.renderProduct(product[1],product[0]);
+                    })
+                }
             </div>
             <div className="row">
                 <div className="col-md-12">
@@ -72,8 +76,8 @@ const mapDispatchToProps = (dispatch)=>({
 });
 //ownProps are available here because this component is defined directly on route.
 //child componenets must include compose withRoutes
-const mapStateToProps = (state,ownProps)=>({
-    Products: getProducts(state,ownProps)
+const mapStateToProps = (state)=>({
+    Products: getProducts(state)
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Products);

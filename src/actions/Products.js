@@ -1,7 +1,6 @@
 import {fetchProducts as fetchProductsApi,
         loadMore as loadMoreApi,
-        fetchProductById as fetchProductByIdApi,
-        fetchCategories  as fetchCategoriesApi}  from '../api/fetchProducts';
+        fetchProductById as fetchProductByIdApi}  from '../api/fetchProducts';
 import {getRenderedProductsLength} from '../selectors/Products';
 
 export const fetchProducts = ()=>{
@@ -12,6 +11,7 @@ export const fetchProducts = ()=>{
                 type: 'FETCH_PRODUCT_START'
             });
             const Products = await fetchProductsApi();
+            // console.log("Products are ", Products);
             dispatch({
                 type: 'FETCH_PRODUCT_SUCCESS',
                 payload: Products
@@ -26,29 +26,6 @@ export const fetchProducts = ()=>{
         };
     };
 };
-
-export const fetchCategories = ()=>{
-    
-    return async (dispatch,getState)=>{
-        // console.log("Fetching entire state ", getState());
-        try{
-            dispatch({
-                type: 'FETCH_CATEGORIES_START'
-            });
-            const categories = await fetchCategoriesApi();
-            dispatch({
-                type: 'FETCH_CATEGORIES_SUCCESS',
-                payload: categories
-            });
-        }catch(err){
-            dispatch({
-                type: 'FETCH_CATEGORIES_FAILURE',
-                payload: err,
-                error: true
-            });
-        };
-    };
-}; 
 
 export const loadMore = ()=>{
     
@@ -95,33 +72,3 @@ export const fetchProductById = id=>{
     };
 };
 
-export const addProductToBasket = id => dispatch => {
-    dispatch({
-        type: 'ADD_PRODUCT_TO_BASKET',
-        payload: id
-    });
-};
-
-export const searchProduct = text => dispatch =>{
-    console.log("searching ", text);
-    dispatch({
-        type: 'SEARCH_PRODUCT',
-        payload: text
-    })};
-
-export const removeProductFromBasket = (id)=> async dispatch =>{
-    dispatch({
-        type: 'REMOVE_PRODUCT_FROM_BASKET',
-        payload: id
-    });
-};   
-
-export const cleanBasket = ()=>dispatch => {
-    dispatch({
-        type: 'CLEAN_BASKET'
-    });
-};
-
-export const basketCheckout = (Products)=> () =>{
-    alert(JSON.stringify(Products));
-};
