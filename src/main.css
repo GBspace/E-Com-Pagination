@@ -486,6 +486,8 @@ footer {
 }
 .book-list.class1.ng-enter,
 .book-list.class1.ng-leave,
+
+
 .book-list.class1.ng-move{
     transition: 1s linear all;
     webkit-transition: 1s linear all;

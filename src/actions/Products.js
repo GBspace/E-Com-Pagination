@@ -27,48 +27,49 @@ export const fetchProducts = ()=>{
     };
 };
 
-export const loadMore = ()=>{
+// export const loadMore = ()=>{
     
-    return async (dispatch,getState) => {
-        const offset = getRenderedProductsLength(getState());
-        try{
-            dispatch({
-                type: 'LOAD_MORE_START'
-            });
-            const Products = await loadMoreApi({offset});
-            dispatch({
-                type: 'LOAD_MORE_SUCCESS',
-                payload: Products
-            });
-        }catch(err){
-            dispatch({
-                type: 'LOAD_MORE_FAILURE',
-                payload: err,
-                error: true
-            });
-        };
-    };
-};
+//     return async (dispatch,getState) => {
+//         const offset = getRenderedProductsLength(getState());
+//         // const offset = 10;
+//         try{
+//             dispatch({
+//                 type: 'LOAD_MORE_START'
+//             });
+//             const Products = await loadMoreApi({offset});
+//             dispatch({
+//                 type: 'LOAD_MORE_SUCCESS',
+//                 payload: Products
+//             });
+//         }catch(err){
+//             dispatch({
+//                 type: 'LOAD_MORE_FAILURE',
+//                 payload: err,
+//                 error: true
+//             });
+//         };
+//     };
+// };
 
-export const fetchProductById = id=>{
-    return async (dispatch,getState) => {
-        const offset = getRenderedProductsLength(getState());
-        try{
-            dispatch({
-                type: 'FETCH_PRODUCT_BY_ID_START'
-            });
-            const product = await fetchProductByIdApi(id);
-            dispatch({
-                type: 'FETCH_PRODUCT_BY_ID_SUCCESS',
-                payload: product
-            });
-        }catch(err){
-            dispatch({
-                type: 'FETCH_PRODUCT_BY_ID_FAILURE',
-                payload: err,
-                error: true
-            });
-        };
-    };
-};
+// export const fetchProductById = id=>{
+//     return async (dispatch,getState) => {
+//         const offset = getRenderedProductsLength(getState());
+//         try{
+//             dispatch({
+//                 type: 'FETCH_PRODUCT_BY_ID_START'
+//             });
+//             const product = await fetchProductByIdApi(id);
+//             dispatch({
+//                 type: 'FETCH_PRODUCT_BY_ID_SUCCESS',
+//                 payload: product
+//             });
+//         }catch(err){
+//             dispatch({
+//                 type: 'FETCH_PRODUCT_BY_ID_FAILURE',
+//                 payload: err,
+//                 error: true
+//             });
+//         };
+//     };
+// };
 
