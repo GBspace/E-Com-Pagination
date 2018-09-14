@@ -14,48 +14,26 @@ const defaultProps = {
 }
 
 const isEqual = function (value, other) {
-
-	
 	let type = Object.prototype.toString.call(value);
-
-	
 	if (type !== Object.prototype.toString.call(other)) return false;
-
-	
 	if (['[object Array]', '[object Object]'].indexOf(type) < 0) return false;
-
-	
 	let valueLen = type === '[object Array]' ? value.length : Object.keys(value).length;
 	let otherLen = type === '[object Array]' ? other.length : Object.keys(other).length;
 	if (valueLen !== otherLen) return false;
-
-	
 	let compare = function (item1, item2) {
-
-		
 		let itemType = Object.prototype.toString.call(item1);
-
-		
 		if (['[object Array]', '[object Object]'].indexOf(itemType) >= 0) {
 			if (!isEqual(item1, item2)) return false;
 		}
-
-		
 		else {
-
-			
 			if (itemType !== Object.prototype.toString.call(item2)) return false;
-
 			if (itemType === '[object Function]') {
 				if (item1.toString() !== item2.toString()) return false;
 			} else {
 				if (item1 !== item2) return false;
 			}
-
 		}
 	};
-
-	
 	if (type === '[object Array]') {
 		for (let i = 0; i < valueLen; i++) {
 			if (compare(value[i], other[i]) === false) return false;
@@ -67,10 +45,7 @@ const isEqual = function (value, other) {
 			}
 		}
 	}
-
-
 	return true;
-
 };
  
 class Pagination extends React.Component {
@@ -156,23 +131,17 @@ class Pagination extends React.Component {
         }
         return (
         <div>
-            <ul className="list-group list-inline">
-                <li className={pager.currentPage === 1 ? 'list-group-item disabled' : 'list-group-item'}>
-                    <a onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
-                </li>
-                <li key={activePage} className={pager.currentPage === activePage ? 'list-group-item active' : 'list-group-item'}>
-                    <a onClick={() => this.setPage(pager.currentPage)}>{activePage}</a>
-                </li>
-                <li key={activePage+1} className={'list-group-item'}>
-                    <a onClick={() => this.setPage(pager.currentPage+1)}>{activePage+1}</a>
-                </li>
-                <li key={activePage+2} className={'list-group-item'}>
-                    <a onClick={() => this.setPage(pager.currentPage+2)}>{activePage+2}</a>
-                </li>
-                <li className={pager.currentPage === pager.totalPages ? 'list-group-item disabled' : 'list-group-item'}>
-                    <a onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
-                </li>
-
+            <ul className="list-group list-inline pull-right">
+                <li className={pager.currentPage === 1 ? 'list-group-item disabled' : 'list-group-item'}
+                     onClick={() => this.setPage(pager.currentPage - 1)}>Previous</li>
+                <li key={activePage} className={pager.currentPage === activePage ? 'list-group-item active' : 'list-group-item'}
+                    onClick={() => this.setPage(pager.currentPage)}>{activePage}</li>
+                <li key={activePage+1} className={'list-group-item'}
+                    onClick={() => this.setPage(pager.currentPage+1)}>{activePage+1}</li>
+                <li key={activePage+2} className={'list-group-item'}
+                    onClick={() => this.setPage(pager.currentPage+2)}>{activePage+2}</li>
+                <li className={pager.currentPage === pager.totalPages ? 'list-group-item disabled' : 'list-group-item'}
+                    onClick={() => this.setPage(pager.currentPage + 1)}>Next</li>
             </ul>
         </div>
         );

@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchProducts} from '../actions/Products';
 import {getProducts} from '../selectors/Products';
-import {Link} from 'react-router';
 import R from 'ramda';
 import Pagination from './Pagination';
 
@@ -10,7 +9,7 @@ class Products extends React.Component{
 
     constructor(props){
         super(props);
-        console.log("Constructor");
+        // console.log("Constructor");
         this.state={
             // productsPerPage:8,
             // currentPage:1
@@ -23,12 +22,12 @@ class Products extends React.Component{
     };
     
     onChangePage(pageOfItems) {
-        console.log(" update state with new page of items");
+        // console.log(" update state with new page of items");
         this.setState({ pageOfItems: pageOfItems });
     }
     
     async componentDidMount(){
-        console.log("inside componentDidMount");
+        // console.log("inside componentDidMount");
        this.props.fetchProducts();
     }
 
@@ -40,14 +39,14 @@ class Products extends React.Component{
     //     }
     //   }
 
-    componentDidUpdate(prevProps) {
-        Object.entries(this.props).forEach(([key, val]) =>
-          prevProps[key] !== val && console.log(`Prop '${key}' changed`)
-        );
-      }
+    // componentDidUpdate(prevProps) {
+    //     Object.entries(this.props).forEach(([key, val]) =>
+    //       prevProps[key] !== val && console.log(`Prop '${key}' changed`)
+    //     );
+    //   }
 
     renderProduct = (product,index)=>{
-        console.log("rendering product ", product);
+        // console.log("rendering product ", product);
         const shortDesc = `${R.take(60,product.description)}...`;
         return (
             <div className='col-sm-3 col-lg-3 col-md-3 book-list' key={index}>
@@ -72,7 +71,7 @@ class Products extends React.Component{
 
     render(){
         const {Products} = this.props;
-        console.log("rendering" ,  this.state.pageOfItems);
+        // console.log("rendering" ,  this.state.pageOfItems);
         return(
         <div>
             <div className="books row">
@@ -101,14 +100,14 @@ class Products extends React.Component{
 };
 
 const mapDispatchToProps = (dispatch)=>{
-    console.log("mapDispatchToProps");
+    // console.log("mapDispatchToProps");
     return{
     fetchProducts: ()=>dispatch(fetchProducts())
 }};
 
 const mapStateToProps = (state)=>{
-    console.log("mapStateToProps");
-    console.log(" getProducts(state) ",  getProducts(state));
+    // console.log("mapStateToProps");
+    // console.log(" getProducts(state) ",  getProducts(state));
     return{
         Products: getProducts(state)
     }
