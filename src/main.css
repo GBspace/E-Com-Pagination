@@ -20,6 +20,11 @@
 
 .view-container{
     margin-top:20px;
+   
+}
+
+.container{
+    background-color: rgba(248, 244, 244, 0.952);
 }
 .cart-order{
     margin:0 auto;
@@ -34,7 +39,8 @@
 }
 
 .caption{
-    min-height:165px;
+    /* min-height:165px; */
+    border-top: 1px solid #DCDCDC;
 }
 
 
@@ -43,7 +49,13 @@
     position: relative;
 }
 .book-list .thumbnail img{
-    width:100%;
+    width:60%;
+    height:60%;
+    position: relative;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0)
+    
 }
 .book-list figure::before {
     position: absolute;
@@ -176,7 +188,21 @@
 }
 .thumbnail{
     overflow: hidden;
+    height:250px;
+    border:1px solid rgba(194, 194, 194, 0.836);
+    
 }
+
+.head-container{
+    border-bottom :1px solid rgba(194, 194, 194, 0.836);
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+};
+
+.totalProds{
+    vertical-align: middle;
+};
+
 .header{
     color: #36A0FF;
     font-size: 27px;
@@ -200,7 +226,8 @@
 .books .book-list{
     display: inline-block;
     float: none;
-    vertical-align: top;
+    
+    
 }
 .well{
     border-radius: 0 0 4px 4px;
@@ -417,22 +444,26 @@ nav.navbar-inverse .navbar-nav>li>a:hover,nav.navbar-inverse .navbar-nav>li>a.Ac
 }
 
 .thumbnail img {
-    /* width: 100%;*/
+    
     display:inline-block !important;
+    background-color: #fff;
+    border: 0;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    
+
 }
 
-.ratings {
-    padding-right: 10px;
-    padding-left: 10px;
-    color: #d17581;
-}
 
-.thumbnail {
+
+
+/* .thumbnail {
     padding: 0;
-}
+} */
 
 .thumbnail .caption-full {
-    padding: 9px;
+    padding: 3px;
     color: #333;
 }
 footer {
@@ -496,7 +527,9 @@ ul li {
     text-align: center;
   }
 
-
+.dropdown{
+    margin: 20px 0;
+}
 .book-list.class1.ng-move{
     transition: 1s linear all;
     webkit-transition: 1s linear all;

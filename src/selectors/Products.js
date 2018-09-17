@@ -10,6 +10,8 @@ export const getProducts = (state)=>{
     
 };
 
-export const getRenderedProductsLength = state => R.length(state.product);
 
-
+export const itemsPerPageCount = state=>{
+    // console.log(state.ProductsPage.itemsPerPage);
+    return state.ProductsPage.itemsPerPage;
+}
