@@ -1,7 +1,5 @@
-import {fetchProducts as fetchProductsApi,
-        loadMore as loadMoreApi,
-        fetchProductById as fetchProductByIdApi}  from '../api/fetchProducts';
-import {getRenderedProductsLength} from '../selectors/Products';
+
+import {fetchProducts as fetchProductsApi}  from '../api/fetchProducts';
 
 export const fetchProducts = ()=>{
     
@@ -27,49 +25,14 @@ export const fetchProducts = ()=>{
     };
 };
 
+export const updateItemsCount=(itemsCount)=>({
+    type: 'UPDATE_ITEMS_COUNT',
+    payload: itemsCount
+});
+
+
+// export const fetchUpdatedItemsCount=()=>({
+//     type: 'FETCH_UPDATED_COUNT'
+// });
 // export const loadMore = ()=>{
     
-//     return async (dispatch,getState) => {
-//         const offset = getRenderedProductsLength(getState());
-//         // const offset = 10;
-//         try{
-//             dispatch({
-//                 type: 'LOAD_MORE_START'
-//             });
-//             const Products = await loadMoreApi({offset});
-//             dispatch({
-//                 type: 'LOAD_MORE_SUCCESS',
-//                 payload: Products
-//             });
-//         }catch(err){
-//             dispatch({
-//                 type: 'LOAD_MORE_FAILURE',
-//                 payload: err,
-//                 error: true
-//             });
-//         };
-//     };
-// };
-
-// export const fetchProductById = id=>{
-//     return async (dispatch,getState) => {
-//         const offset = getRenderedProductsLength(getState());
-//         try{
-//             dispatch({
-//                 type: 'FETCH_PRODUCT_BY_ID_START'
-//             });
-//             const product = await fetchProductByIdApi(id);
-//             dispatch({
-//                 type: 'FETCH_PRODUCT_BY_ID_SUCCESS',
-//                 payload: product
-//             });
-//         }catch(err){
-//             dispatch({
-//                 type: 'FETCH_PRODUCT_BY_ID_FAILURE',
-//                 payload: err,
-//                 error: true
-//             });
-//         };
-//     };
-// };
-

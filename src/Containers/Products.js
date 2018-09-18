@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchProducts} from '../actions/Products';
 import {getProducts} from '../selectors/Products';
-import R from 'ramda';
+import * as R from 'ramda';
 import Pagination from './Pagination';
 
 class Products extends React.Component{
@@ -51,33 +51,36 @@ class Products extends React.Component{
         return (
             <div className='col-sm-3 col-lg-3 col-md-3 book-list' key={index}>
                 <div className="thumbnail">
-                    <span>{product.id}</span>
+                   
                     <img className='img-thumbnail'
                         src={product.product_image}
                         alt={product.product_name}
                     />
-                </div>
-                <div className="caption">
-                    <h4 className="pull-right">
+                    <div className="caption">
+                    <h5> {product.product_name} </h5>
+                    <h6> {shortDesc}</h6>
+                    <h4>
                         ${product.price}
                     </h4>
                  
-                    <p> {shortDesc}</p>
+                   
                     
                 </div>
+                </div>
+                
             </div>
         );
     };
 
     render(){
         const {Products} = this.props;
-        // console.log("rendering" ,  this.state.pageOfItems);
+        console.log("rendering" ,  this.state.pageSize);
+        // console.log("Updated page size is ", this.state.pageSize);
         return(
         <div>
             <div className="books row">
                 {
                     this.state.pageOfItems.map((product,index)=>{
-                        // console.log("index --> ", index ,"product is ", product );
                         return this.renderProduct(product,index);
                     })
                 }
@@ -87,13 +90,12 @@ class Products extends React.Component{
                     <Pagination className=" pull-right"
                         items={Object.values(Products)}
                         onChangePage={this.onChangePage}
+                        pageSize={this.state.pageSize}
                     >
                     </Pagination>
                 </div>
             </div>
-          
            
-
         </div>            
        
         )};

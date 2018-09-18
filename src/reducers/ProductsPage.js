@@ -1,9 +1,11 @@
-import R from 'ramda';
+import * as R from 'ramda';
 
 
 const initialState = {
     ids: [],
-    search: ''
+    search: '',
+    itemsPerPage:'8',
+    totalItems:''
 };
 
 export default (state = initialState,action)=>{
@@ -11,7 +13,8 @@ export default (state = initialState,action)=>{
         case 'FETCH_PRODUCT_SUCCESS':
             return(
                 R.merge(state,{
-                    ids: R.pluck('id',action.payload)
+                    ids: R.pluck('id',action.payload),
+                    totalItems:R.pluck('id',action.payload).length
                 })
             );
         case 'LOAD_MORE_SUCCESS' :
@@ -27,6 +30,14 @@ export default (state = initialState,action)=>{
                 search: action.payload
             });
         }
+        case 'UPDATE_ITEMS_COUNT':
+        {   const itemsPerPage = action.payload;
+            return({
+                ...state,
+                itemsPerPage
+            });
+        }
+       
         default:
             return state;
     }

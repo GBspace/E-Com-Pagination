@@ -5,17 +5,15 @@ import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import Layout from './Containers/Layout';
 import Products from './Containers/Products';
-import {browserHistory,Router,Route} from 'react-router';
+import {BrowserRouter as Router,Route} from 'react-router-dom';
 
 
 const store = configureStore();
 
 const jsx = (
     <Provider store={store}>
-       <Router history={browserHistory}>
-            <Route component={Layout}>
-                <Route path='/' component={Products}></Route>
-            </Route>
+       <Router>
+            <Route path='/' component={Layout}></Route>
        </Router>
     </Provider>
 );
