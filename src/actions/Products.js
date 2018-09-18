@@ -30,8 +30,4 @@ export const updateItemsCount=(itemsCount)=>({
 });
 
 
-// export const fetchUpdatedItemsCount=()=>({
-//     type: 'FETCH_UPDATED_COUNT'
-// });
-// export const loadMore = ()=>{
     
