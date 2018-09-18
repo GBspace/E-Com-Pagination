@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
  
 const propTypes = {
     items: PropTypes.array.isRequired,
-    onChangePage: PropTypes.func.isRequired,
-    pageSize: PropTypes.number.isRequired,
-	initialPage: PropTypes.number
+//     onChangePage: PropTypes.func.isRequired,
+    initialPage: PropTypes.number,
+    pageSize: PropTypes.number
 }
  
 const defaultProps = {
     initialPage: 1,
-	pageSize: 10
+    pageSize: 10
 }
 
 const isEqual = function (value, other) {
@@ -52,34 +51,25 @@ const isEqual = function (value, other) {
 class Pagination extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { pager: {}};
-
-		this.setPage=this.setPage.bind(this);
-		this.getPager=this.getPager.bind(this);
-
-	}
+        this.state = { pager: {} };
+    }
  
-    componentWillMount=()=> {
+    componentWillMount() {
         
         if (this.props.items && this.props.items.length) {
-			// console.log("componentWillMount");
             this.setPage(this.props.initialPage);
         }
     }
  
-    componentDidUpdate=(prevProps)=> {
-	//    console.log("prevProps.pageSize ", prevProps.pageSize);
-	//    console.log("this.props.pageSizee ", this.props.pageSize);
-        if (!(isEqual(prevProps.items,this.props.items)) || prevProps.pageSize !== this.props.pageSize ) {
-				// console.log("componentDidUpdate");
+    componentDidUpdate(prevProps) {
+       
+        if (!(isEqual(prevProps.items,this.props.items))) {
                 this.setPage(this.props.initialPage);
-	        }
-	}
-
-    setPage=(page)=>{
-	console.log("this.props.pageSize " , this.props.pageSize);
+            }
+    }
+ 
+    setPage(page) {
         var { items, pageSize } = this.props;
-		console.log("SetPage ", pageSize );
         var pager = this.state.pager;
  
         if (page < 1 || page > pager.totalPages) {
@@ -92,12 +82,9 @@ class Pagination extends React.Component {
         this.props.onChangePage(pageOfItems);
     }
  
-    getPager=(totalItems, currentPage, pageSize)=>{
-	// console.log("GetPager ", pageSize);
-		// pageSize=this.props.itemsPerPage;
+    getPager(totalItems, currentPage, pageSize) {
         currentPage = currentPage || 1;
-        pageSize = pageSize || 8;
-		// console.log("pageSize in getPager ", pageSize);
+        pageSize = pageSize || 10;
         var totalPages = Math.ceil(totalItems / pageSize);
         var startPage, endPage;
         if (totalPages <= 10) {
@@ -121,8 +108,7 @@ class Pagination extends React.Component {
         const endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
  
         const pages = [...Array((endPage + 1) - startPage).keys()].map(i => startPage + i);
-		// let itemsCount = this.props.pageSize;
-		// console.log("itemsCount ", itemsCount);
+ 
         return {
             totalItems: totalItems,
             currentPage: currentPage,
@@ -138,16 +124,12 @@ class Pagination extends React.Component {
  
 
     render() {
-		console.log("rendering in Pagination ", this.props.pageSize);
-		
-		let pager = this.state.pager;
-		
+        let pager = this.state.pager;
         let activePage = pager.currentPage;
         if (!pager.pages || pager.pages.length <= 1) {
             return null;
         }
         return (
-		
         <div>
             <ul className="list-group list-inline pull-right">
                 <li className={pager.currentPage === 1 ? 'list-group-item disabled' : 'list-group-item'}
@@ -168,6 +150,4 @@ class Pagination extends React.Component {
  
 Pagination.propTypes = propTypes;
 Pagination.defaultProps = defaultProps;
-
-
 export default Pagination;
