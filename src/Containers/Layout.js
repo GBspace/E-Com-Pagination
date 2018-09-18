@@ -1,8 +1,9 @@
 import React from 'react';
 import Dropdown from './Dropdown';
 import TotalProducts from './TotalProducts';
+import Products from './Products';
 
-const Layout = ({children})=>{
+const Layout = ()=>{
     return (
         <div className="view-container">
             <div className="container">  
@@ -18,7 +19,7 @@ const Layout = ({children})=>{
                 
                 <div className="row">
                     <div className="col-md-12">
-                        {children}
+                        <Products/>
                     </div>
                 </div>
             </div>

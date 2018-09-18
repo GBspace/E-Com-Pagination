@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchProducts} from '../actions/Products';
 import {getProducts,itemsPerPageCount} from '../selectors/Products';
-import R from 'ramda';
+import * as R from 'ramda';
 import Pagination from './Pagination';
 
 

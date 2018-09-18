@@ -1,5 +1,5 @@
 
-import R from 'ramda';
+import * as R from 'ramda';
 
 export const fetchProducts = async () =>{
     const res = await fetch("http://demo8407807.mockable.io/getProducts");
