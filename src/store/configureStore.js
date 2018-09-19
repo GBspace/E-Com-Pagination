@@ -2,7 +2,6 @@ import {createStore, combineReducers,applyMiddleware,compose} from 'redux';
 import thunk from 'redux-thunk';
 import productReducer from '../reducers/Product';
 import ProductsPage from '../reducers/ProductsPage';
-import ProductPage from '../reducers/ProductPage';
 import {routerReducer} from 'react-router-redux';
 
 
@@ -13,9 +12,7 @@ export default ()=>{
         combineReducers({
             routing:routerReducer,
             product: productReducer,
-            ProductsPage: ProductsPage,
-            ProductPage: ProductPage
-           
+            ProductsPage: ProductsPage
         }),composeEnhancers(applyMiddleware(thunk))
     );
     return store;

@@ -11,7 +11,7 @@ export class Dropdown extends React.Component{
     };
     handleClick=(e)=>{
         e.preventDefault();
-        // console.log(e.target.id);
+       
         this.props.updateItemsCount(e.target.id);
     };
 

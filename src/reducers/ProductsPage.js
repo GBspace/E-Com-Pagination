@@ -25,8 +25,7 @@ export default (state = initialState,action)=>{
             });
         }
         case 'SEARCH_PRODUCT' :
-        {   console.log("text to be searched is " , action.payload);
-            return R.merge(state, {
+        {   return R.merge(state, {
                 search: action.payload
             });
         }

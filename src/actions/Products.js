@@ -8,13 +8,13 @@ export const fetchProducts = ()=>{
                 type: 'FETCH_PRODUCT_START'
             });
             const Products = await fetchProductsApi();
-            // console.log("Products are ", Products);
+            
             dispatch({
                 type: 'FETCH_PRODUCT_SUCCESS',
                 payload: Products
             });
         }catch(err){
-            // console.log("Error ", err);
+            
             dispatch({
                 type: 'FETCH_PRODUCT_FAIL',
                 payload: err,

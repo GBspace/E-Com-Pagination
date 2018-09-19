@@ -62,25 +62,21 @@ class Pagination extends React.Component {
     componentWillMount=()=> {
         
         if (this.props.items && this.props.items.length) {
-			// console.log("componentWillMount");
-            this.setPage(this.props.initialPage);
+			this.setPage(this.props.initialPage);
         }
     }
  
     componentDidUpdate=(prevProps)=> {
-	//    console.log("prevProps.pageSize ", prevProps.pageSize);
-	//    console.log("this.props.pageSizee ", this.props.pageSize);
+
         if (!(isEqual(prevProps.items,this.props.items)) || prevProps.pageSize !== this.props.pageSize ) {
-				// console.log("componentDidUpdate");
-                this.setPage(this.props.initialPage);
+				this.setPage(this.props.initialPage);
 	        }
 	}
 
     setPage=(page)=>{
-	console.log("this.props.pageSize " , this.props.pageSize);
+	
         var { items, pageSize } = this.props;
-		console.log("SetPage ", pageSize );
-        var pager = this.state.pager;
+		var pager = this.state.pager;
  
         if (page < 1 || page > pager.totalPages) {
             return;
@@ -93,12 +89,9 @@ class Pagination extends React.Component {
     }
  
     getPager=(totalItems, currentPage, pageSize)=>{
-	// console.log("GetPager ", pageSize);
-		// pageSize=this.props.itemsPerPage;
-        currentPage = currentPage || 1;
+		currentPage = currentPage || 1;
         pageSize = pageSize || 8;
-		// console.log("pageSize in getPager ", pageSize);
-        var totalPages = Math.ceil(totalItems / pageSize);
+		var totalPages = Math.ceil(totalItems / pageSize);
         var startPage, endPage;
         if (totalPages <= 10) {
             startPage = 1;
@@ -121,9 +114,7 @@ class Pagination extends React.Component {
         const endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
  
         const pages = [...Array((endPage + 1) - startPage).keys()].map(i => startPage + i);
-		// let itemsCount = this.props.pageSize;
-		// console.log("itemsCount ", itemsCount);
-        return {
+		return {
             totalItems: totalItems,
             currentPage: currentPage,
             pageSize: pageSize,
@@ -138,7 +129,6 @@ class Pagination extends React.Component {
  
 
     render() {
-		console.log("rendering in Pagination ", this.props.pageSize);
 		
 		let pager = this.state.pager;
 		

@@ -9,7 +9,6 @@ export default (state=productInitialState, action)=>{
         {   
             
             const newValue = R.indexBy(R.prop('id'),action.payload);
-            // console.log("new value" ,newValue);
             return R.merge(state,newValue);
         }
         case 'LOAD_MORE_SUCCESS' :

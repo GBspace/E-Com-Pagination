@@ -12,6 +12,5 @@ export const getProducts = (state)=>{
 
 
 export const itemsPerPageCount = state=>{
-    // console.log(state.ProductsPage.itemsPerPage);
-    return state.ProductsPage.itemsPerPage;
+   return state.ProductsPage.itemsPerPage;
 }
