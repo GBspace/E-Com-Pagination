@@ -1,18 +1,8 @@
 import React from 'react';
 import {TotalProducts} from '../../src/Containers/TotalProducts';
+import {shallow} from 'enzyme';
 
-
-// export const TotalProducts = (props)=>{
-//     return(
-//         <div>
-//             <h4> All Products</h4>
-//             <span className="label label-default">Total Products : {props.totalProd}</span>
-//         </div>
-//     );
-// };
-
-// const mapStateToProps=(state)=>({
-//     totalProd:state.ProductsPage.totalItems
-// });
-
-// export default connect(mapStateToProps)(TotalProducts);
+test('should render TotalProducts component correctly with value 100',()=>{
+    const wrapper=shallow(<TotalProducts totalProd={10} />);
+    expect(wrapper).toMatchSnapshot();
+});

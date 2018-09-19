@@ -3,7 +3,7 @@ import Dropdown from './Dropdown';
 import TotalProducts from './TotalProducts';
 import Products from './Products';
 
-const Layout = ()=>{
+export const Layout = ()=>{
     return (
         <div className="view-container">
             <div className="container">  

@@ -5,6 +5,10 @@ import {itemsPerPageCount} from '../selectors/Products';
 
 export class Dropdown extends React.Component{
 
+    constructor(props){
+        super(props);
+        this.handleClick=this.handleClick.bind(this);
+    };
     handleClick=(e)=>{
         e.preventDefault();
         // console.log(e.target.id);
@@ -17,9 +21,9 @@ export class Dropdown extends React.Component{
                 <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{this.props.pageSize} Per Page
                 <span className="caret"></span></button>
                 <ul className="dropdown-menu dropdown-items">
-                    <li><a id={8} onClick={this.handleClick} href="#">8</a></li>
-                    <li><a id={16} href="#" onClick={this.handleClick}>16</a></li>
-                    <li><a id={24} href="#" onClick={this.handleClick}>24</a></li>
+                    <li><a id={8} onClick={this.handleClick}>8</a></li>
+                    <li><a id={16} onClick={this.handleClick}>16</a></li>
+                    <li><a id={24} onClick={this.handleClick}>24</a></li>
                 </ul>
           </div>
         );

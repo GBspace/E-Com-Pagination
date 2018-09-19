@@ -1,5 +1,5 @@
 
-import * as R from 'ramda';
+
 
 export const fetchProducts = async () =>{
     const res = await fetch("http://demo8407807.mockable.io/getProducts");
@@ -8,10 +8,4 @@ export const fetchProducts = async () =>{
     return json;
 };
 
-
-// export const loadMore = async ({offset}) => {
-//     return new Promise((resolve)=>{
-//         resolve(Products);
-//     });
-// };
 
