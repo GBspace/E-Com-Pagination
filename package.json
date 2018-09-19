@@ -2,7 +2,7 @@
   "name": "productdisplay",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.io/GBspace/React-Redux-E-Commerce",
+  "homepage": "https://github.io/GBspace/E-Com-Pagination",
   "dependencies": {
     "classnames": "^2.2.6",
     "prop-types": "^15.6.2",
