@@ -4,8 +4,6 @@ import productReducer from '../reducers/Product';
 import ProductsPage from '../reducers/ProductsPage';
 import {routerReducer} from 'react-router-redux';
 
-
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default ()=>{
